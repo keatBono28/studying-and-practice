@@ -1,19 +1,57 @@
 package applications.arraypractice;
 
+import java.util.ArrayList;
+
 public class PlusOne {
+
     public int[] plusOne(int[] digits){
-        int len = digits.length;
-        int[] dig = new int[digits.length];
-        for (int i = 0; i < len ; i++) {
-            int temp = Integer.parseInt(String.valueOf(digits[i]));
-            dig[i+1] = temp;
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        if(digits == null || digits.length == 0){
+            int temp[] = {1};
+            return temp;
         }
-        if(digits[len - 1] != 9){
-            dig[len - 1] += 1;
-        } else{
-            dig[len - 1] = 1;
-            dig[len] = Integer.parseInt("0");
+        int carry = 0;
+        for (int i = digits.length -1; i >= 0 ; i--) {
+            if(i == digits.length -1){
+                carry = carry + digits[i] + 1;
+            } else {
+                carry += digits[i];
+            }
+            result.add(0, carry % 10);
+            carry /= 10;
         }
-        return dig;
+        if(carry == 1){
+            result.add(0,1);
+        }
+        int resultArray[] = new int[result.size()];
+        for (int i = 0; i < result.size() ; i++) {
+            resultArray[i] = result.get(i);
+        }
+        return resultArray;
+    }
+
+    public int[] plusOneAdvanced(int[] digits){
+        if(digits == null || digits.length == 0){
+            int[] temp={1};
+            return temp;
+        }
+        int carry=1;
+        int i;
+        for( i=digits.length-1;i>=0;i--){
+            if(digits[i]==9){
+                digits[i]=0;
+            }
+            else{
+                carry+=digits[i];
+                digits[i]=carry;
+                break;
+            }
+        }
+        if(i<0){
+            int[] result = new int[digits.length+1];
+            result[0]=1;
+            return result;
+        }else
+            return digits;
     }
 }

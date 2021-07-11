@@ -1,6 +1,7 @@
 package applications.arraypractice;
 
 public class DominantIndex {
+
     public int domIndex(int[] nums){
         int largest = nums[0];
         int index = 0;
