@@ -1,4 +1,4 @@
-package main.java.applications.arraypractice;
+package applications.arraypractice;
 
 public class PlusOne {
     public int[] plusOne(int[] digits){

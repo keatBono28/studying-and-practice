@@ -1,4 +1,4 @@
-package main.java.applications.arraypractice;
+package applications.arraypractice;
 
 public class DominantIndex {
     public int domIndex(int[] nums){
