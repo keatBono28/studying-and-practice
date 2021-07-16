@@ -26,5 +26,48 @@ public class MultiDArrayPractice {
         printArray(b);
     }
 
+    public int[] DiagonalTraverse(int [][] mat){
+        // TODO: Come back and look at this later, works, but not sure i fully understand yet
+
+        if(mat.length == 0){
+            return new int[0];
+        }
+
+        int matrixLength = mat.length;
+        int arrayLength = mat[0].length;
+        int row = 0;
+        int column = 0;
+        int[] resultArray = new int[matrixLength * arrayLength];
+        int resultLength = resultArray.length;
+
+        for (int i = 0; i < resultLength; i++) {
+            resultArray[i] = mat[row][column];
+            // Now update the row and column based on the traversing
+            if((row + column) % 2 == 0){ // Its even
+                if(column == arrayLength - 1){
+                    row++;
+                } else if(row == 0){
+                    column++;
+                } else{
+                    row--;
+                    column++;
+                }
+            }else{
+                if(row == matrixLength - 1){
+                    column++;
+                } else if(column == 0){
+                    row++;
+                } else{
+                    row++;
+                    column--;
+                }
+            }
+        }
+
+        return resultArray;
+
+
+    }
+
 
 }
